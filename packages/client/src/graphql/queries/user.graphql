@@ -1,0 +1,27 @@
+fragment UserFields on User {
+  id
+  email
+  firstName
+  lastName
+}
+
+query me {
+  me {
+    ...UserFields
+    role
+  }
+}
+
+query usersByQuery($input: UsersQueryInput!) {
+  usersByQuery(input: $input) {
+    total
+    items {
+      id
+      email
+      firstName
+      lastName
+      createdAt
+      updatedAt
+    }
+  }
+}

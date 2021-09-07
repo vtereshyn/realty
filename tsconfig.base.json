@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "moduleResolution": "node",
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "pretty": true,
+    "lib": ["es2017", "esnext.asynciterable", "es2019.array", "dom"],
+    "types": ["node"],
+    "typeRoots": ["node_modules/@types", "src/types", "@types"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.json"],
+  "exclude": [
+    "node_modules",
+    "store/actions",
+    "store/reducers",
+    "dist",
+    "__test__",
+    "**/*.spec.ts",
+    "**/__mocks__",
+    "**/__tests__"
+  ]
+}

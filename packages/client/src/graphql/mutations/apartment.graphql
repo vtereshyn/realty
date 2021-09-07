@@ -1,0 +1,13 @@
+mutation updateApartment($input: ApartmentUpdateInput!, $id: String!) {
+  updateApartment(input: $input, id: $id)
+}
+
+mutation createApartment($input: ApartmentCreateInput!) {
+  createApartment(input: $input) {
+    id
+  }
+}
+
+mutation deleteApartment($id: String!) {
+  deleteApartment(id: $id)
+}

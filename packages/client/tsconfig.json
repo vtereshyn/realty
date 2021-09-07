@@ -1,0 +1,26 @@
+{
+  "extends": "../../tsconfig.client.json",
+  "compilerOptions": {
+    "typeRoots": [
+      "../../node_modules/@types",
+      "src/types"
+    ],
+    "outDir": "dist",
+    "rootDir": "src",
+    "composite": true,
+    "incremental": true,
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "noEmit": true
+  },
+  "references": [],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.json"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

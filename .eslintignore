@@ -1,0 +1,11 @@
+node_modules
+dist
+_generators
+_templates
+.vscode
+**/*.d.ts
+type-elastic
+packages/**/__tests__/*.ts
+babel.config.js
+packages/client/**/graphql
+packages/client/src/generated/**/*.tsx

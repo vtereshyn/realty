@@ -1,0 +1,46 @@
+query apartment($id: String!) {
+  apartment(id: $id) {
+    id
+    status
+    name
+    description
+    roomsCount
+    price
+    size
+    pictures
+    location {
+      address
+      coordinates {
+        lat
+        lng
+      }
+    }
+    realtor {
+      id
+      firstName
+      lastName
+      email
+    }
+  }
+}
+
+query apartmentsByQuery($input: ApartmentQueryInput!) {
+  apartmentsByQuery(input: $input) {
+    total
+    items {
+      id
+      status
+      name
+      roomsCount
+      price
+      pictures
+      location {
+        address
+        coordinates {
+          lat
+          lng
+        }
+      }
+    }
+  }
+}

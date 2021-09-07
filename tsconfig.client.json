@@ -1,0 +1,37 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "composite": true,
+    "incremental": true,
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": false,
+    "importHelpers": true,
+    "jsx": "react-jsx",
+    "lib": ["es2015", "es2017", "dom", "es2020.string"],
+    "module": "esNext",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "stripInternal": true,
+    "resolveJsonModule": true,
+    "types": ["node", "google.maps"],
+    "typeRoots": ["node_modules/@types", "src/types", "src/types/lodash"]
+  },
+  "include": [
+    "packages/client/src/**/*.ts",
+    "packages/client/src/**/*.tsx",
+    "packages/client/src/**/*.json"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "__test__",
+    "**/*.spec.ts",
+    "**/__mocks__",
+    "**/__tests__"
+  ]
+}

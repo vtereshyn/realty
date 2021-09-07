@@ -1,0 +1,47 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@apollo/client": "3.4.1",
+    "@chakra-ui/react": "1.6.5",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "cra-template-typescript": "1.1.2",
+    "dayjs": "1.10.6",
+    "downshift": "6.1.6",
+    "formik": "2.2.9",
+    "framer-motion": "^4",
+    "google-map-react": "^2.1.10",
+    "history": "5.0.0",
+    "pluralize": "8.0.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-infinite-scroll-component": "6.1.0",
+    "react-responsive-carousel": "3.2.20",
+    "react-router-dom": "5.2.0",
+    "react-scripts": "4.0.3",
+    "react-spinners": "0.11.0",
+    "use-places-autocomplete": "1.9.4",
+    "yup": "0.32.9"
+  },
+  "scripts": {
+    "start": "PORT=8080 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "gql:generate": "graphql-codegen --config codegen.yml"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+mutation createClient($input: ClientCreateInput!) {
+  createClient(input: $input) {
+    token
+  }
+}
+
+mutation createRealtor($input: RealtorCreateInput!) {
+  createRealtor(input: $input) {
+    token
+  }
+}

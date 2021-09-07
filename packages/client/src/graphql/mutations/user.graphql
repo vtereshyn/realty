@@ -1,0 +1,11 @@
+mutation deleteUser($input: UserDeleteInput!) {
+    deleteUser(input: $input)
+}
+
+mutation updateUser($id: String!, $role: UserRole!, $input: UserUpdateInput!) {
+    updateUser(id: $id, role: $role, input: $input) {
+        ...UserFields
+        createdAt
+        updatedAt
+    }
+}

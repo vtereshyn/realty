@@ -1,0 +1,30 @@
+version: '2'
+services:
+  sql:
+    image: bitnami/postgresql:latest
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./data/pg:/bitnami/postgresql
+      - ./docker/sql/conf.d:/opt/bitnami/postgresql/conf/conf.d
+      - ./docker/sql/pg-entrypoint:/docker-entrypoint-initdb.d
+    ports:
+      - 5432:5432
+
+  redis:
+    image: redis
+    command:
+      - "redis-server"
+      - "--loglevel ${REDIS_LOGLEVEL:-warning}"
+      - "--databases 2"
+      - "--save 900 1"
+      - "--save 300 10"
+      - "--save 60 10000"
+      - "--maxmemory ${REDIS_MAXMEM:-3gb}"
+      - "--maxmemory-policy ${REDIS_POLICY:-noeviction}"
+    hostname: redis
+    volumes:
+      - ./data/redis:/data
+    ports:
+      - 6379:6379

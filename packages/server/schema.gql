@@ -1,0 +1,229 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Apartment {
+  id: String!
+  name: String!
+  status: RentStatus!
+  description: String!
+  pictures: [String!]!
+  size: Float!
+  price: Float!
+  roomsCount: RoomsCount!
+  location: Location!
+  realtor: Realtor!
+  client: Client!
+}
+
+enum RentStatus {
+  available
+  rented
+}
+
+enum RoomsCount {
+  Room_1
+  Rooms_2
+  Rooms_3
+  Rooms_4
+  Rooms_5Plus
+}
+
+type PaginatedApartments {
+  total: Int!
+  items: [Apartment!]!
+}
+
+type User {
+  id: String!
+  role: UserRole!
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+}
+
+enum UserRole {
+  client
+  realtor
+  admin
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type PaginatedUsers {
+  total: Float!
+  items: [User!]!
+}
+
+type Client {
+  id: String!
+  role: UserRole!
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  apartment: Apartment!
+}
+
+type Realtor {
+  id: String!
+  role: UserRole!
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  apartments: [Apartment!]!
+}
+
+type Coordinates {
+  lat: Float!
+  lng: Float!
+}
+
+type Location {
+  address: String!
+  coordinates: Coordinates!
+}
+
+type UserToken {
+  token: String!
+}
+
+type UserWithToken {
+  token: String!
+  user: User!
+}
+
+type Query {
+  me: User!
+  usersByQuery(input: UsersQueryInput!): PaginatedUsers!
+  apartment(id: String!): Apartment!
+  apartmentsByQuery(input: ApartmentQueryInput!): PaginatedApartments!
+}
+
+input UsersQueryInput {
+  role: UserRole!
+  order: OrderArgs = {field: "updatedAt", direction: Desc}
+  pagination: PaginationArgs = {take: 10}
+}
+
+input OrderArgs {
+  field: String = "updatedAt"
+  direction: Order = Desc
+}
+
+enum Order {
+  Asc
+  Desc
+}
+
+input PaginationArgs {
+  skip: Int = 0
+  take: Int = 10
+}
+
+input ApartmentQueryInput {
+  id: String
+  size: Float
+  status: String
+  price: Float
+  roomsCount: [RoomsCount!]
+  realtorId: String
+  pagination: PaginationArgs = {take: 10}
+  order: OrderArgs = {field: "updatedAt", direction: Desc}
+}
+
+type Mutation {
+  createClient(input: ClientCreateInput!): UserToken!
+  createRealtor(input: RealtorCreateInput!): UserToken!
+  createAdmin(input: AdminCreateInput!): UserToken!
+  login(input: LoginInput!): UserWithToken!
+  updateUser(input: UserUpdateInput!, role: UserRole!, id: String!): User!
+  deleteUser(input: UserDeleteInput!): Boolean!
+  createApartment(input: ApartmentCreateInput!): Apartment!
+  updateApartment(input: ApartmentUpdateInput!, id: String!): Boolean!
+  deleteApartment(id: String!): Boolean!
+}
+
+input ClientCreateInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+}
+
+input RealtorCreateInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+}
+
+input AdminCreateInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+input UserUpdateInput {
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+}
+
+input UserDeleteInput {
+  id: String!
+  role: UserRole!
+  newRealtorId: String
+}
+
+input ApartmentCreateInput {
+  name: String!
+  description: String!
+  status: String = "available"
+  size: Float!
+  pictures: [String!] = []
+  price: Float!
+  roomsCount: RoomsCount!
+  location: LocationInput!
+  realtorId: String!
+}
+
+input LocationInput {
+  address: String!
+  coordinates: CoordinatesInput!
+}
+
+input CoordinatesInput {
+  lat: Float!
+  lng: Float!
+}
+
+input ApartmentUpdateInput {
+  name: String
+  description: String
+  status: String
+  size: Float
+  pictures: [String!]
+  price: Float
+  roomsCount: RoomsCount
+  location: LocationInput
+  realtorId: String
+}
